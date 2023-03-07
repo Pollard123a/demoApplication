@@ -9,6 +9,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import com.company.data.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,6 +58,10 @@ public class Main {
         if (args.length > 0 && args[0].equals("with-issues")) {
             logger().info("Running with performance issues.");
 
+            for (int i=0;i<10000;i++) {
+                Test test = new Test();
+                test.testHeap();
+            }
             withIssues = true;
             reuseMapper = false;
             reuseLogger = false;
